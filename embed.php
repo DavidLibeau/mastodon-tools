@@ -1,15 +1,4 @@
 <?php
-class MySimpleXMLElement extends SimpleXMLElement
-{
-    public function addProcessingInstruction($target, $data = NULL) {
-        $node   = dom_import_simplexml($this);
-        $pi     = $node->ownerDocument->createProcessingInstruction($target, $data);
-        $result = $node->insertBefore($pi, $node->childNodes->item(0));
-        return $this;
-    }
-}
-
-
 if(isset($_GET["url"]) && $_GET["url"]!=""){
     header('Content-type: text/xml');
     //echo("<h1>Embed: ".$_GET["url"]."</h1>");
@@ -40,10 +29,6 @@ if(isset($_GET["url"]) && $_GET["url"]!=""){
     $atomUrl = $xpath->query("//link[@type='application/atom+xml']");
     $atomUrl = $atomUrl[0]->getAttribute("href");
     
-    
-    //echo("<ul><li>Instance : ".$instance."</li><li>User : ".$user."</li><li>Status ID : ".$statusid."</li><li>Atom url : <a href=\"".$atomUrl."\" target=\"_blank\">".$atomUrl."</li></ul>");
-    
-    
     // CURL $atomUrl
     $ch = curl_init(str_replace("https://", "http://", $atomUrl));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -52,12 +37,7 @@ if(isset($_GET["url"]) && $_GET["url"]!=""){
     curl_close($ch);
     fclose($fp);
     
-    //print($xml);
-    
-    
-    $xml  = simplexml_load_string($curlxml, 'MySimpleXMLElement');
-    $xml->addProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="style.xsl"');
-    $xml->asXML('php://output');
+    print(str_replace('<?xml version="1.0"?>', '<?xml version="1.0"?><?xml-stylesheet type="text/xsl" href="style.xsl"?>', $curlxml));
 
 }
 ?>
