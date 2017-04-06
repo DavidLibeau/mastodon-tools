@@ -1,5 +1,5 @@
 # mastodon-widget
-Embed Mastodon messages all around the web.
+Embed Mastodon statuses all around the web.
 
 
 > The idea of this script is to provide an embeded version of a Mastodon status. With that, we can embed our status on other websites.
