@@ -23,6 +23,9 @@ https forced:
 
 image:
 [mastodon url="https://mastodon.xyz/@David/252287" height="500"][/mastodon]
+
+spoiler:
+[mastodon url="https://mastodon.xyz/@David/291091" height="250"][/mastodon]
 ```
 
 
