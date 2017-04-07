@@ -7,6 +7,7 @@
  * Author: David Libeau
  */
 
+$CACHETIME=0*60; // 10*60 = 10min
 
 function mastodon_embed_callback($atts=null, $content=null)
 {
@@ -14,29 +15,13 @@ function mastodon_embed_callback($atts=null, $content=null)
 	
 	if(isset($url) && $url!=""){
 	
-		// CURL $_GET["url"]
-		$ch = curl_init(urldecode(str_replace("https://", "http://", $url)));
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_SSLVERSION, 3);
-		curl_setopt($ch, CURLOPT_CAPATH, PATH_TO_CERT_DIR);
-		curl_setopt($ch, CURLOPT_TIMEOUT, 0);
-		curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-		//curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-		curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-		curl_setopt($ch, CURLOPT_USERAGENT, "Embed");
-		curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-
-		$content = curl_exec( $ch );
-		$err     = curl_errno( $ch );
-		$errmsg  = curl_error( $ch );
-		$header  = curl_getinfo( $ch );
-
-		$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-		curl_close($ch);
+		$response = wp_remote_get(str_replace("https://", "http://", $url));
+        set_transient( 'mastodon_status_', $response, $CACHETIME );
+        
+        $httpCode = wp_remote_retrieve_response_code($response);
+        $body = wp_remote_retrieve_body( $response );
+        
+        //echo($body);
 
 		if($httpCode == 404) {
 			return("<div class='mastodon-embed'>404</div>");
@@ -45,7 +30,7 @@ function mastodon_embed_callback($atts=null, $content=null)
 		}else{
 			$doc = new DOMDocument();
 			libxml_use_internal_errors(true);
-			$doc->loadHTML($content);
+			$doc->loadHTML($body);
 			$xpath = new DOMXPath($doc);
 			$atomUrl = $xpath->query("//link[@type='application/atom+xml']");
 

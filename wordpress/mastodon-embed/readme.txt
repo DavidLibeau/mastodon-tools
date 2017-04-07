@@ -44,6 +44,9 @@ No screenshots
 
 == Changelog ==
 
+= 1.2 =
+* Change CURL to Wordpress HTTP API
+
 = 1.1 =
 * Add height option
 
