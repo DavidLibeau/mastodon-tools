@@ -7,7 +7,15 @@ Embed Mastodon status :
 
 `[mastodon url="https://mastodon.xyz/@David/15605"][/mastodon]`
 
+https forced:
+`[mastodon url="https://mastodon.social/@Gargron/1"][/mastodon]`
+
+image:
+`[mastodon url="https://mastodon.xyz/@David/252287" height="500"][/mastodon]`
+
 Realtime test : https://blog.davidlibeau.fr/dev-test-embed-mastodon/
+
+
 
 ## Dev
 
