@@ -7,6 +7,7 @@ Embed Mastodon status :
 
 `[mastodon url="https://mastodon.xyz/@David/15605"][/mastodon]`
 
+Realtime test : https://blog.davidlibeau.fr/dev-test-embed-mastodon/
 
 ## Dev
 
