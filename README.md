@@ -1,9 +1,11 @@
 # mastodon-widget
 Embed Mastodon statuses all around the web.
 
+## Wordpress
 
-> The idea of this script is to provide an embeded version of a Mastodon status. With that, we can embed our status on other websites.
+`[mastodon url="https://mastodon.xyz/@David/15605"][/mastodon]`
 
-### Process
 
-User enter a status link -> cURL the status link to find the XML Atom link -> cURL XML Atom version of the status -> display the XML with an XSLT stylesheet
+## Dev
+
+In dev folder, I am trying things.
