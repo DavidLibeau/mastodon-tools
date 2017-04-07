@@ -1,19 +1,29 @@
 # mastodon-widget
-Embed Mastodon statuses all around the web.
+Embed [Mastodon](https://github.com/tootsuite/mastodon) statuses all around the web.
 
 ## Wordpress
 
-Embed Mastodon status :
+Embed Mastodon status.
 
-`[mastodon url="https://mastodon.xyz/@David/15605"][/mastodon]`
+![Screenshot](https://github.com/DavidLibeau/mastodon-widget/blob/master/wordpress/screenshot.png)
+
+
+### Example
+
+As seen at  https://blog.davidlibeau.fr/dev-test-embed-mastodon/
+
+
+```
+Example
+
+[mastodon url="https://mastodon.xyz/@David/15605"][/mastodon]
 
 https forced:
-`[mastodon url="https://mastodon.social/@Gargron/1"][/mastodon]`
+[mastodon url="https://mastodon.social/@Gargron/1"][/mastodon]
 
 image:
-`[mastodon url="https://mastodon.xyz/@David/252287" height="500"][/mastodon]`
-
-Realtime test : https://blog.davidlibeau.fr/dev-test-embed-mastodon/
+[mastodon url="https://mastodon.xyz/@David/252287" height="500"][/mastodon]
+```
 
 
 
