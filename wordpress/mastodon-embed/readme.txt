@@ -44,5 +44,8 @@ No screenshots
 
 == Changelog ==
 
+= 1.1 =
+* Add height option
+
 = 1.0 =
 * First version

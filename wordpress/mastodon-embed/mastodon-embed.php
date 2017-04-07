@@ -51,7 +51,11 @@ function mastodon_embed_callback($atts=null, $content=null)
 
 			if($atomUrl->length){
 				$embedUrl = str_replace(".atom", "/embed", $atomUrl[0]->getAttribute("href"));
-				return('<div class="mastodon-embed"><iframe src="'. $embedUrl .'" style="overflow: hidden" frameborder="0" width="400" height="150" scrolling="no"></iframe></div>');
+				if(isset($height) && $height!=""){
+					return('<div class="mastodon-embed"><iframe src="'. $embedUrl .'" style="overflow: hidden" frameborder="0" width="400" height="'.$height.'" scrolling="no"></iframe></div>');
+				}else{
+					return('<div class="mastodon-embed"><iframe src="'. $embedUrl .'" style="overflow: hidden" frameborder="0" width="400" height="150" scrolling="no"></iframe></div>');
+				}
 			}
 		}
 	
