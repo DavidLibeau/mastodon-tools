@@ -1,4 +1,4 @@
-# mastodon-widget
+# mastodon-tools
 Embed [Mastodon](https://github.com/tootsuite/mastodon) statuses all around the web.
 
 ## Wordpress
