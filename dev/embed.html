@@ -1,0 +1,15 @@
+<script src="//dav.li/jquery/2.1.4.js"></script>
+<script>
+	var $_GET = {};
+	document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+		function decode(s) {
+			return decodeURIComponent(s.split("+").join(" "));
+		}
+		$_GET[decode(arguments[1])] = decode(arguments[2]);
+	});
+	$.ajax({
+		url: $_GET["url"]
+	}).done(function (data) {
+		console.log(data);
+	});
+</script>
