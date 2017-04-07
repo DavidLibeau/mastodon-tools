@@ -3,7 +3,7 @@
  * Plugin Name: Mastodon embed
  * Plugin URI: https://github.com/DavidLibeau/mastodon-widget
  * Description: A plugin to embed Mastodon statuses.
- * Version: 1.0
+ * Version: 1.2
  * Author: David Libeau
  */
 
