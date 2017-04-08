@@ -23,21 +23,24 @@ app.get('/', function (req, res) {
                     if (!atomUrl.length) {
                         res.send('<h1>Error: Atom XML url not found</h1><p>The link may not be a valid Mastodon link (status deleted ?).</p>');
                     } else {
-                        var imageName = user + "." + statusId + ".png";
-                        var imageUrl= req.protocol + '://' + req.get('host') + "/static/" + imageName;
-                        
                         atomUrl = atomUrl.attr("href");
                         var embedUrl = atomUrl.replace(".atom", "/embed");
                         var parsedUrl = url.parse(embedUrl);
-                        urlToImage(embedUrl, "db"+imageName).then(function() {
-                            console.log(imageName);
-                        }).catch(function(err) {
-                            console.error(err);
-                        });
-                        
+
                         var instance = parsedUrl.host;
                         var user = parsedUrl.path.split("/")[2];
                         var statusId = parsedUrl.path.split("/")[4];
+
+                        var imageName = user + "-" + instance + "-" + statusId + ".png";
+                        var imageUrl = req.protocol + '://' + req.get('host') + "/static/" + imageName;
+
+
+                        urlToImage(embedUrl, "db" + imageName).then(function () {
+                            console.log(imageName);
+                        }).catch(function (err) {
+                            console.error(err);
+                        });
+
 
                         var page = '<html><head>' +
                             '<title></title>' +
