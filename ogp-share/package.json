@@ -1,0 +1,30 @@
+{
+  "name": "sharemastodon",
+  "version": "1.0.0",
+  "description": "Share Mastodon statuses with ogp or Twitter card included !",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidLibeau/mastodon-tools.git"
+  },
+  "keywords": [
+    "mastodon",
+    "ogp",
+    "twittercard",
+    "export",
+    "screenshot"
+  ],
+  "author": "DavidLibeau",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/DavidLibeau/mastodon-tools/issues"
+  },
+  "homepage": "https://github.com/DavidLibeau/mastodon-tools#readme"
+}
