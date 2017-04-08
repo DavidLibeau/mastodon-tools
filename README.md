@@ -3,9 +3,9 @@ Embed [Mastodon](https://github.com/tootsuite/mastodon) statuses all around the 
 
 ## Wordpress
 
-Embed Mastodon status.
+Embed Mastodon statuses in you blog or whatever Wordpress site.
 
-![Screenshot](https://github.com/DavidLibeau/mastodon-widget/blob/master/wordpress/screenshot.png)
+![Screenshot](http://mastodon.tools/wordpress/screenshot.png)
 
 
 ### Example
@@ -28,6 +28,21 @@ spoiler:
 [mastodon url="https://mastodon.xyz/@David/291091" height="250"][/mastodon]
 ```
 
+
+## ogp-share [indev]
+
+Share Mastodon statuses on all the other social network (Twitter, Facebook...).
+Render your status in Twitter Card of Facebook with [OGP](http://ogp.me/) metatags.
+
+```
+http://share.mastodon.tools/?url=https://mastodon.xyz/@David/192108
+```
+
+### Exemple
+
+![Screenshot Twitter](http://mastodon.tools/ogp-share/screenshots/tw.png)
+
+![Screenshot Facebook](http://mastodon.tools/ogp-share/screenshots/fb.png)
 
 
 ## Dev
