@@ -31,7 +31,7 @@ spoiler:
 ```
 
 
-> The Wordpress plugin may not work for some instances due to forced HTTPS. Feel fre to help me to resolve [this issue](https://github.com/DavidLibeau/mastodon-tools/issues/1) !
+> The Wordpress plugin may not work for some instances due to forced HTTPS. Feel free to help me to resolve [this issue](https://github.com/DavidLibeau/mastodon-tools/issues/1) !
 
 
 
@@ -56,7 +56,7 @@ http://share.mastodon.tools/?url=https://mastodon.xyz/@David/192108
 In dev folder, I am trying things.
 
 
-### Support
+## Support
 
 [I'm @David@mastodon.xyz](https://mastodon.xyz/@David).
 
