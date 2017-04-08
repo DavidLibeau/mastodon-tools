@@ -5,6 +5,8 @@ Embed [Mastodon](https://github.com/tootsuite/mastodon) statuses all around the 
 
 Embed Mastodon statuses in you blog or whatever Wordpress site.
 
+Just write `[mastodon url="https://mastodon.xyz/@David/15605"][/mastodon]` in any of your article for
+
 ![Screenshot](http://mastodon.tools/wordpress/screenshot.png)
 
 
@@ -29,9 +31,13 @@ spoiler:
 ```
 
 
+> The Wordpress plugin may not work for some instances due to forced HTTPS. Feel fre to help me to resolve [this issue](https://github.com/DavidLibeau/mastodon-tools/issues/1) !
+
+
+
 ## ogp-share [indev]
 
-Share Mastodon statuses on all the other social network (Twitter, Facebook...).
+Share Mastodon statuses on all other social networks (Twitter, Facebook...).
 Render your status in Twitter Card of Facebook with [OGP](http://ogp.me/) metatags.
 
 ```
@@ -50,5 +56,7 @@ http://share.mastodon.tools/?url=https://mastodon.xyz/@David/192108
 In dev folder, I am trying things.
 
 
+### Support
 
-[I'm @David@mastodon.xyz](https://mastodon.xyz/@David)
+[I'm @David@mastodon.xyz](https://mastodon.xyz/@David).
+
