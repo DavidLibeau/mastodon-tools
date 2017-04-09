@@ -1,7 +1,9 @@
-# mastodon-tools
+# [Mastodon.tools](http://mastodon.tools/)
 Embed [Mastodon](https://github.com/tootsuite/mastodon) statuses all around the web.
 
 ## Wordpress
+
+[**Download plugin :arrow_down:**](https://wordpress.org/plugins/embed-mastodon/)
 
 Embed Mastodon statuses in you blog or whatever Wordpress site.
 
@@ -36,6 +38,8 @@ spoiler:
 
 
 ## ogp-share [indev]
+
+[**share.Mastodon.tools :arrow_right:**](http://share.mastodon.tools/)
 
 Share Mastodon statuses on all other social networks (Twitter, Facebook...).
 Render your status in Twitter Card of Facebook with [OGP](http://ogp.me/) metatags.
