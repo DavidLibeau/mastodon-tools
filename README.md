@@ -1,5 +1,9 @@
 # [Mastodon.tools](http://mastodon.tools/)
+[Open sources](https://github.com/DavidLibeau/mastodon-tools)
+
 Embed [Mastodon](https://github.com/tootsuite/mastodon) statuses all around the web.
+
+> You have a cool app using Mastodon API ? Add a new issue to get a free subdomain yourappname.Mastodon.tools !
 
 ## Wordpress
 
