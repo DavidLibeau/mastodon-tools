@@ -6,35 +6,42 @@
 	<title>#Mastodon status wall</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="theme-color" content="#0070C0"> </head>
-	<link href="//dav.li/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<style>
-		body{
-			margin: 10px;
-		}
-		ul{
-			padding: 0;
-		}
-		li{
-			list-style: none;
-		}
-		.mastodonStatus .panel-heading img {
-			height: 20px;
-		}
-	</style>
+<link href="//dav.li/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<style>
+	body {
+		margin: 10px;
+	}
+	
+	ul {
+		padding: 0;
+	}
+	
+	li {
+		list-style: none;
+	}
+	
+	.mastodonStatus .panel-heading img {
+		height: 20px;
+	}
+	#notConnected * {
+		display: inline-block!important;
+		width: auto!important;
+	}
+</style>
+
 <body>
 	<h1>#Mastodon status wall</h1>
 	<ul id="timeline"></ul>
-	
-	<div id="notConnected" class="alert alert-info" role="alert">You need to grant <strong>read-only</strong> access to this app on Mastodon. <button class="btn btn-primary" role="button">Let's do it</button></div>
+	<div id="notConnected" class="alert alert-info" role="alert">You need to grant <strong>read-only</strong> access to this app on Mastodon. <strong>Your instance ?</strong>
+		<form id="instanceForm"><input class="form-control" type="url" id="instance" placeholder="https://mastodon.social" /> <input type="submit" class="btn btn-primary" role="button" value="Let's do it"/>
+	</div>
 	
 	<div id="statusTemplate" style="display:none">
 		<li id="status{{id}}" class="mastodonStatus">
 			<div class="panel panel-default">
-			  <div class="panel-heading"><a href="{{account.url}}" target="_blank"><img src="{{account.avatar}}" /> @{{account.acct}}</a> - <a href="{{url}}" target="_blank">{{created_at}}</a></div>
-			  <div class="panel-body">
-					{{if spoiler_text}}{{spoiler_text}}{{/if}}
-					{{content}}
-			  </div>
+				<div class="panel-heading">
+					<a href="{{account.url}}" target="_blank"><img src="{{account.avatar}}" /> @{{account.acct}}</a> - <a href="{{url}}" target="_blank">{{created_at}}</a></div>
+				<div class="panel-body"> {{if spoiler_text}}{{spoiler_text}}{{/if}} {{content}} </div>
 			</div>
 		</li>
 	</div>
@@ -44,32 +51,34 @@
 	<script src="//dav.li/bootstrap/js/bootstrap.min.js"></script>
 	<script src="//dav.li/markupjs/1.5.21.js"></script>
 	<script>
-		var app_name = "Mastodon.tools";
-		var redirect_url = window.location;
-		var server_url = "https://mastodon.xyz";
-		var user_email = "";
-		var app = new Libodon(app_name, redirect_url);
-		console.log(app);
-		console.log(localStorage);
-		var connection = app.connect(server_url, user_email);
-		console.log(connection);
-		connection.then(conn => {
-			if (conn.result == 'redirect') {
-				console.log(conn.target);
-				$("#notConnected").click(function(){
+		$("#instanceForm").submit(function (evt) {
+			evt.preventDefault();
+			var app_name = "Mastodon.tools";
+			var redirect_url = window.location;
+			var server_url = $("#instance").val();
+			var user_email = "";
+			var app = new Libodon(app_name, redirect_url);
+			console.log(app);
+			console.log(localStorage);
+			var connection = app.connect(server_url, user_email);
+			console.log(connection);
+			connection.then(conn => {
+				if (conn.result == 'redirect') {
+					console.log(conn.target);
 					window.location = conn.target;
-				});
-			}else if (conn.result == 'success') {
-				$("#notConnected").remove();
-				// connection is successful and the app is usable
-				console.log("Connected !");
-				console.log(app.account_self());
-				timelineStream("#Mastodon", "#timeline")
-				setInterval(function () {
+				}
+				else if (conn.result == 'success') {
+					$("#notConnected").remove();
+					// connection is successful and the app is usable
+					console.log("Connected !");
+					console.log(app.account_self());
 					timelineStream("#Mastodon", "#timeline")
-				}, 10000);
-			}
-			console.log(conn);
+					setInterval(function () {
+						timelineStream("#Mastodon", "#timeline")
+					}, 10000);
+				}
+				console.log(conn);
+			});
 		});
 
 		function timelineStream(apiTarget, domTarget) {
@@ -78,7 +87,8 @@
 				for (var i = 0; i < data.length; i++) {
 					if ($(domTarget + " #status" + data[i].id).length) {
 						$(domTarget + " #status" + data[i].id).html(status.content);
-					}else {
+					}
+					else {
 						console.log(data[i]);
 						$(domTarget).prepend(Mark.up($("#statusTemplate").html(), data[i]));
 					}
