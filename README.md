@@ -41,6 +41,12 @@ spoiler:
 > The Wordpress plugin may not work for some instances due to forced HTTPS. Feel free to help me to resolve [this issue](https://github.com/DavidLibeau/mastodon-tools/issues/1) !
 
 
+## wall
+
+1 file app to let you easily stream an #hashtag. Use it like a "Twitter wall" thing, in events, for example.
+
+Test it at [Mastodon.tools/wall](https://mastodon.tools/wall) !
+
 
 ## ogp-share [indev]
 

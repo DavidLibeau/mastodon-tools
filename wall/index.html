@@ -25,6 +25,8 @@
 	<h1>#Mastodon status wall</h1>
 	<ul id="timeline"></ul>
 	
+	<div id="notConnected" class="alert alert-info" role="alert">You need to grant <strong>read-only</strong> access to this app on Mastodon. <button class="btn btn-primary" role="button">Let's do it</button></div>
+	
 	<div id="statusTemplate" style="display:none">
 		<li id="status{{id}}" class="mastodonStatus">
 			<div class="panel panel-default">
@@ -54,11 +56,11 @@
 		connection.then(conn => {
 			if (conn.result == 'redirect') {
 				console.log(conn.target);
-				setTimeout(function () {
+				$("#notConnected").click(function(){
 					window.location = conn.target;
-				}, 5000);
-				console.log("Redirecting you to " + conn.target);
+				});
 			}else if (conn.result == 'success') {
+				$("#notConnected").remove();
 				// connection is successful and the app is usable
 				console.log("Connected !");
 				console.log(app.account_self());
