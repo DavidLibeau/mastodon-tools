@@ -3,7 +3,8 @@
 
 Embed [Mastodon](https://github.com/tootsuite/mastodon) statuses all around the web.
 
-> You have a cool app using Mastodon API ? Add a new issue to get a free subdomain yourappname.Mastodon.tools !
+
+> You have a cool app using Mastodon API ? Get a free subdomain yourappname.Mastodon.tools ! [Learn more](/dns)
 
 ## Wordpress
 
