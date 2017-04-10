@@ -47,6 +47,8 @@ spoiler:
 
 Test it at [Mastodon.tools/wall](https://mastodon.tools/wall) !
 
+![Screenshot](http://mastodon.tools/wall/screenshot.png)
+
 
 ## ogp-share [indev]
 
