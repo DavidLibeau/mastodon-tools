@@ -45,9 +45,9 @@
 	<script src="//dav.li/markupjs/1.5.21.js"></script>
 	<script>
 		var app_name = "Mastodon.tools";
-		var redirect_url = "https://dev.mastodon.tools";
+		var redirect_url = window.location;
 		var server_url = "https://mastodon.xyz";
-		var user_email = "contact@davidlibeau.fr";
+		var user_email = "";
 		var app = new Libodon(app_name, redirect_url);
 		console.log(app);
 		console.log(localStorage);
