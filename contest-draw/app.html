@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Draw Mastodon status</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="theme-color" content="#0070C0"> </head>
+<link href="//dav.li/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<style>
+	body {
+		margin: 10px;
+	}
+	
+	ul {
+		padding: 0;
+	}
+	
+	li {
+		list-style: none;
+	}
+	
+	.mastodonStatus .panel-heading img {
+		height: 20px;
+	}
+	
+	#notConnected * {
+		display: inline-block!important;
+		width: auto!important;
+	}
+</style>
+
+<body>
+	<h1>Draw Mastodon status</h1>
+	<form id="statusForm">
+		<div class="form-group">
+			<label for="exampleInputEmail1">Mastodon status URL you want to draw</label>
+			<input type="url" class="form-control" id="statusUrl" placeholder="https://mastodon.social/@Gargron/1"/>
+		</div>
+		<input type="submit" class="btn btn-default" value="Sign in and draw" />
+	</form>
+	
+	<script src="//dav.li/jquery/2.1.4.js"></script>
+	<script src="//dav.li/libodonjs/libodon.js"></script>
+	<script src="//dav.li/bootstrap/js/bootstrap.min.js"></script>
+	<script src="//dav.li/markupjs/1.5.21.js"></script>
+	<script>
+		var app_name = "Mastodon.tools";
+		var redirect_url = window.location.href.split("?")[0].replace("?","");
+		console.log(redirect_url);
+		var server_url = getCookie("instance");
+		var user_email = "";
+		var app = new Libodon(app_name, redirect_url);
+		connectToMastodon(false);
+		$("#statusForm").submit(function (evt) {
+			evt.preventDefault();
+			var parser = document.createElement('a');
+			if($("#statusUrl").val()==""){
+				parser.href = $("#statusUrl").attr("placeholder");
+			}else{
+				parser.href = $("#statusUrl").val();
+			}
+			server_url = window.location.protocol+"//"+parser.hostname;
+			document.cookie = "instance=" + server_url;
+			document.cookie = "statusUrl=" + $("#statusUrl").val();
+			//console.log(app);
+			//console.log(localStorage);
+			connectToMastodon(true);
+		});
+
+		function connectToMastodon(redirect) {
+			var connection = app.connect(server_url, user_email);
+			console.log(connection);
+			connection.then(conn => {
+				if (conn.result == 'redirect') {
+					console.log(conn.target);
+					if (redirect) {
+						window.location = conn.target;
+					}
+				}
+				else if (conn.result == 'success') {
+					// connection is successful and the app is usable
+					console.log("Connected !");
+					console.log(app.account_self());
+					if(getCookie("statusUrl")){
+						$("#statusUrl").val(getCookie("statusUrl"));
+					}
+					$("#statusForm [type=submit]").val("Draw");
+					console.log(app.search())
+				}
+				console.log(conn);
+			});
+		}
+
+		function getCookie(cname) {
+			var name = cname + "=";
+			var decodedCookie = decodeURIComponent(document.cookie);
+			var ca = decodedCookie.split(';');
+			for (var i = 0; i < ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0) == ' ') {
+					c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
+	</script>
+</body>
+
+</html>
