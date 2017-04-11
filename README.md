@@ -8,7 +8,7 @@
 
 ## Wordpress
 
-Embed Mastodon statuses in you blog or whatever Wordpress site only with :
+Embed Mastodon statuses in your blog, or whatever Wordpress site, only with :
 
 ```
 [mastodon url="https://mastodon.xyz/@David/15605"][/mastodon]
