@@ -30,6 +30,11 @@ Share your Mastodon statuses on all other social networks (Twitter, Facebook...)
 
 :arrow_right: [Learn more](ogp-share)
 
+## Contest-draw
+
+Draw random Mastodon boosters.
+
+:arrow_right: [Learn more](contest-draw)
 
 ### Dev
 
