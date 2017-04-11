@@ -35,10 +35,26 @@
 	<form id="statusForm">
 		<div class="form-group">
 			<label for="exampleInputEmail1">Mastodon status URL you want to draw</label>
-			<input type="url" class="form-control" id="statusUrl" placeholder="https://mastodon.social/@Gargron/1"/>
+			<input type="url" class="form-control" id="statusUrl" placeholder="https://mastodon.social/@Gargron/1" />
 		</div>
 		<input type="submit" class="btn btn-default" value="Sign in and draw" />
 	</form>
+	
+	<div id="result" style="display:none">
+		<h3></h3>
+		<h4></h4>
+		<table class="table">
+			<caption>Result</caption>
+			<thead>
+				<tr>
+					<th></th>
+					<th>#</th>
+					<th>Username</th>
+				</tr>
+			</thead>
+			<tbody> </tbody>
+		</table>
+	</div>
 	
 	<script src="//dav.li/jquery/2.1.4.js"></script>
 	<script src="//dav.li/libodonjs/libodon.js"></script>
@@ -46,7 +62,7 @@
 	<script src="//dav.li/markupjs/1.5.21.js"></script>
 	<script>
 		var app_name = "Mastodon.tools";
-		var redirect_url = window.location.href.split("?")[0].replace("?","");
+		var redirect_url = window.location.href.split("?")[0].replace("?", "");
 		console.log(redirect_url);
 		var server_url = getCookie("instance");
 		var user_email = "";
@@ -55,14 +71,16 @@
 		$("#statusForm").submit(function (evt) {
 			evt.preventDefault();
 			var parser = document.createElement('a');
-			if($("#statusUrl").val()==""){
+			if ($("#statusUrl").val() == "") {
 				parser.href = $("#statusUrl").attr("placeholder");
-			}else{
-				parser.href = $("#statusUrl").val();
+				document.cookie = "statusUrl=" + $("#statusUrl").attr("placeholder");
 			}
-			server_url = window.location.protocol+"//"+parser.hostname;
+			else {
+				parser.href = $("#statusUrl").val();
+				document.cookie = "statusUrl=" + $("#statusUrl").val();
+			}
+			server_url = window.location.protocol + "//" + parser.hostname;
 			document.cookie = "instance=" + server_url;
-			document.cookie = "statusUrl=" + $("#statusUrl").val();
 			//console.log(app);
 			//console.log(localStorage);
 			connectToMastodon(true);
@@ -82,13 +100,41 @@
 					// connection is successful and the app is usable
 					console.log("Connected !");
 					console.log(app.account_self());
-					if(getCookie("statusUrl")){
+					if (getCookie("statusUrl")) {
 						$("#statusUrl").val(getCookie("statusUrl"));
 					}
 					$("#statusForm [type=submit]").val("Draw");
-					console.log(app.search())
+					console.log($("#statusUrl").val());
+					app.search($("#statusUrl").val()).then(function (data) {
+						if (data.statuses) {
+							console.log(data.statuses[0].id);
+							app.reblogged_by(data.statuses[0].id).then(function (data) {
+								console.log(data);
+								var winnerNumber = Math.round(Math.random() * data.length);
+								console.log(winnerNumber);
+								console.log(data[winnerNumber]);
+								$("#result").show();
+								$("#result>h3").html(data.length + " boosts on this status");
+								$("#result>h4").html("@" + data[winnerNumber].acct + " (boost n°" + winnerNumber + ") was chosen randomly !");
+								for (var i = 0; i < data.length; i++) {
+									var result = "<tr>";
+									if (i == winnerNumber) {
+										result += "<td>X</td>"
+									}
+									else {
+										result += "<td></td>"
+									}
+									result += "<td>" + i + "</td><td>@" + data[i].acct + "</td></tr>";
+									$("#result>table>tbody").prepend(result);
+								}
+							});
+						}
+						else {
+							console.log("No status found at that URL. :(")
+						}
+					});
 				}
-				console.log(conn);
+				//console.log(conn);
 			});
 		}
 
