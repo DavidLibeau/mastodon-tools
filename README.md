@@ -1,7 +1,7 @@
 # Mastodon.tools
 :information_source: [Open sources](https://github.com/DavidLibeau/mastodon-tools)
 
-**Useful tools for Mastodon users !**
+**Useful tools for [Mastodon](https://github.com/tootsuite/mastodon) users !**
 
 
 > You have a cool app using Mastodon API ? You can have a free subdomain *yourappname.Mastodon.tools*, if you want ! [Learn more](/dns)
