@@ -1,7 +1,7 @@
 # Mastodon.tools
 :information_source: [Open sources](https://github.com/DavidLibeau/mastodon-tools)
 
-Embed [Mastodon](https://github.com/tootsuite/mastodon) statuses all around the web.
+**Useful tools for Mastodon users !**
 
 
 > You have a cool app using Mastodon API ? You can have a free subdomain *yourappname.Mastodon.tools*, if you want ! [Learn more](/dns)
