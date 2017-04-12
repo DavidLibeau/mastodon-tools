@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: Mastodon embed
- * Plugin URI: https://github.com/DavidLibeau/mastodon-widget
+ * Plugin URI: https://github.com/DavidLibeau/mastodon-tools
  * Description: A plugin to embed Mastodon statuses.
- * Version: 1.2
+ * Version: 1.3
  * Author: David Libeau
  */
 
-$CACHETIME=0*60; // 10*60 = 10min
+$CACHETIME=24*60*60; // 1 day
 
 function mastodon_embed_callback($atts=null, $content=null)
 {
@@ -15,13 +15,15 @@ function mastodon_embed_callback($atts=null, $content=null)
 	
 	if(isset($url) && $url!=""){
 	
-		$response = wp_remote_get(str_replace("https://", "http://", $url));
-        set_transient( 'mastodon_status_', $response, $CACHETIME );
+		$args = array(
+			'sslverify'   => false
+		); 
+
+		$response = wp_remote_get($url,$args);
+        set_transient( 'mastodon_status_', $response, $CACHETIME ); //cache curl response (we only need one responde to get atom url)
         
         $httpCode = wp_remote_retrieve_response_code($response);
         $body = wp_remote_retrieve_body( $response );
-        
-        //echo($body);
 
 		if($httpCode == 404) {
 			return("<div class='mastodon-embed'>404</div>");

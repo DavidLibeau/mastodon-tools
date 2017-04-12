@@ -2,9 +2,9 @@
 Contributors: davidlibeau
 Donate link: http://davidlibeau.fr/
 Tags: mastodon, embed, status, gnu social
-Requires at least: 1.0
-Tested up to: 1.0
-Stable tag: 1.0
+Requires at least: 1.3
+Tested up to: 1.3
+Stable tag: 1.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -14,7 +14,6 @@ A plugin to embed Mastodon statuses.
 
 A plugin to embed Mastodon statuses.
 
->Only work with HTTPS non-forced Mastodon instance. See https://github.com/DavidLibeau/mastodon-widget/issues/1
 
 == Installation ==
 
@@ -43,6 +42,9 @@ Ask [here](https://github.com/DavidLibeau/mastodon-widget/issues/) !
 No screenshots
 
 == Changelog ==
+
+= 1.3 =
+* Support forced HTTPS
 
 = 1.2 =
 * Change CURL to Wordpress HTTP API
