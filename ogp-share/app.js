@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
             req.query.url, ["http://code.jquery.com/jquery.js"],
             function (err, window) {
                 if (err) {
-                    res.send('Error: ' + err);
+                    res.send('Error (res.send): ' + err);
                 } else {
                     var atomUrl = window.$("link[type='application/atom+xml']");
                     if (!atomUrl.length) {
@@ -34,10 +34,20 @@ app.get('/', function (req, res) {
                         var imageName = user + "-" + instance + "-" + statusId + ".png";
                         var imageUrl = req.protocol + '://' + req.get('host') + "/static/" + imageName;
 
-
-                        urlToImage(embedUrl, "db" + imageName).then(function () {
+                        //console.log("urlToImage("+embedUrl.replace("https://","http://")+", db/" + imageName+")");
+                        var options = {
+                            width: 600,
+                            height: 600,
+                            cropWidth: true,
+                            cropHeight: true,
+                            cropOffsetLeft: 100,
+                            // Give a short time to load additional resources
+                            requestTimeout: 100
+                        }
+                        urlToImage(embedUrl.replace("https://","http://"), "db/" + imageName, options).then(function () {
                             console.log(imageName);
                         }).catch(function (err) {
+                            console.log("Error (urlToimage.catch):");
                             console.error(err);
                         });
 
