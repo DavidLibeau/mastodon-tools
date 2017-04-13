@@ -29,6 +29,3 @@ image:
 spoiler:
 [mastodon url="https://mastodon.xyz/@David/291091" height="250"][/mastodon]
 ```
-
-
-> :warning: The Wordpress plugin may not work for some instances due to forced HTTPS. Feel free to help me to resolve [this issue](https://github.com/DavidLibeau/mastodon-tools/issues/1) !
