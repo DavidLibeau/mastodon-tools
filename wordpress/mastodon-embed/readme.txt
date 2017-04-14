@@ -47,7 +47,7 @@ No screenshots
 * Support forced HTTPS
 
 = 1.2 =
-* Change CURL to Wordpress HTTP API
+* Change CURL to WordPress HTTP API
 
 = 1.1 =
 * Add height option

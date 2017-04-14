@@ -6,15 +6,15 @@
 
 > You have a cool app using Mastodon API ? You can have a free subdomain *yourappname.Mastodon.tools*, if you want ! [Learn more](/dns)
 
-## Wordpress
+## WordPress
 
-Embed Mastodon statuses in your blog, or whatever Wordpress site, only with :
+Embed Mastodon statuses in your blog, or whatever WordPress site, only with :
 
 ```
 [mastodon url="https://mastodon.xyz/@David/15605"][/mastodon]
 ```
 
-:arrow_right: [Learn more](wordpress)
+:arrow_right: [Learn more](WordPress)
 
 
 ## Wall
