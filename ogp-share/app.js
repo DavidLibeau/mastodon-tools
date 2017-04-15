@@ -31,24 +31,30 @@ app.get('/', function (req, res) {
                         var user = parsedUrl.path.split("/")[2];
                         var statusId = parsedUrl.path.split("/")[4];
 
-                        var imageName = user + "-" + instance + "-" + statusId + ".png";
+                        var imageName = user + "-" + instance + "-" + statusId + ".jpg";
                         var imageUrl = req.protocol + '://' + req.get('host') + "/static/" + imageName;
 
-                        //console.log("urlToImage("+embedUrl.replace("https://","http://")+", db/" + imageName+")");
-                        var options = {
-                            width: 600,
-                            height: 600,
-                            cropWidth: true,
-                            cropHeight: true,
-                            cropOffsetLeft: 100,
-                            // Give a short time to load additional resources
-                            requestTimeout: 100
-                        }
-                        urlToImage(embedUrl.replace("https://","http://"), "db/" + imageName, options).then(function () {
-                            console.log(imageName);
-                        }).catch(function (err) {
-                            console.log("Error (urlToimage.catch):");
-                            console.error(err);
+                        fs.stat("db/"+imageName, function (err, stat) {
+                            if (err == null) {
+                                //File exist
+                            } else {
+                                var options = {
+                                    width: 600,
+                                    height: 314,
+                                    fileType: 'jpeg',
+                                    fileQuality: 20,
+                                    cropWidth: 600,
+                                    cropHeight: 314,
+                                    cropOffsetLeft: 0,
+                                    cropOffsetTop: 0
+                                }
+                                urlToImage(req.hostname + "/render/?url=" + embedUrl.replace("https://", "http://"), "db/" + imageName, options).then(function () {
+                                    //console.log(imageName);
+                                }).catch(function (err) {
+                                    console.log("Error (urlToimage.catch):");
+                                    console.error(err);
+                                });
+                            }
                         });
 
 
@@ -69,15 +75,19 @@ app.get('/', function (req, res) {
                             '<meta name="twitter:description" content="Open in Mastodon" />' +
                             '<meta name="twitter:image" content="' + imageUrl + '" />' +
                             '<meta name="twitter:image:alt" content="a Mastodon status of @' + user + '@' + instance + '" />' +
-                            '</head><body>' +
+                            '</head><body style="background-color:#444b5d;">' +
+                            '<p><a href="' + req.query.url + '" style="color:white; font-family:sans-serif;">You will be redirected, <strong>click here if nothing happens</strong>.</a></p>'+
+                            '<script>window.location = "' + req.query.url + '";</script>'+
+                        '</body></html>';
+                        
+                        /*
                             '<h1>' + embedUrl + '</h1>' +
                             '<ul>' +
                             '<li>instance: ' + instance + '</li>' +
                             '<li>user: ' + user + '</li>' +
                             '<li>statusId: ' + statusId + '</li>' +
                             '</ul>' +
-                            '<script>window.location = "' + req.query.url + '";</script>'
-                        '</body></html>';
+                        */
 
                         res.send(page);
                     }
@@ -86,9 +96,22 @@ app.get('/', function (req, res) {
             });
 
     } else {
-        res.send('url required');
+        res.send('Error: url required');
     }
 
+});
+
+app.get('/render/', function (req, res) {
+    if (req.query.url != undefined && req.query.url != "") {
+        var page = '<html><head>' +
+            '<title>Render</title>' +
+            '<style>body{width:600px; height:314px; overflow:hidden; background-color:#444b5d;} iframe{margin: 40px; border:0; width:500px; overflow: hidden;}</style>' +
+            '</head><body>' +
+            '<iframe src="' + req.query.url + '"></iframe>' +
+            '</body></html>';
+
+        res.send(page);
+    }
 });
 
 

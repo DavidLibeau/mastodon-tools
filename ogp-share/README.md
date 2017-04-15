@@ -1,4 +1,4 @@
-# ogp-share [indev]
+# ogp-share [beta]
 
 Share your Mastodon statuses on all other social networks (Twitter, Facebook...) as if you had it in front of you.
 

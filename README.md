@@ -24,7 +24,7 @@ Embed Mastodon statuses in your blog, or whatever WordPress site, only with :
 :arrow_right: [Learn more](wall)
 
 
-## Ogp-share [indev]
+## Ogp-share [beta]
 
 Share your Mastodon statuses on all other social networks (Twitter, Facebook...) as if you had it in front of you.
 
