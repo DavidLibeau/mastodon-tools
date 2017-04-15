@@ -1,8 +1,8 @@
-# Wordpress
+# WordPress
 
-Embed Mastodon statuses in your blog, or whatever Wordpress site.
+Embed Mastodon statuses in your blog, or whatever WordPress site.
 
-[**Download plugin :arrow_down:**](https://wordpress.org/plugins/embed-mastodon/)
+[**Download plugin :arrow_down:**](https://WordPress.org/plugins/embed-mastodon/)
 
 
 Just write `[mastodon url="YOU_MASTODON_STATUS_LINK"][/mastodon]` in any of your article body in order to get :
