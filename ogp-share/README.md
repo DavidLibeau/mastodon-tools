@@ -7,6 +7,8 @@ It render your complete status in a Twitter Card or a Facebook preview thanks to
 [**share.Mastodon.tools :arrow_right:**](http://share.mastodon.tools/)
 
 
+> Bug with forced HTTPS instance ! (This is a beta)
+
 
 ## Exemple
 
