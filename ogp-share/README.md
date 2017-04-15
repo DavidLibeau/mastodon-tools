@@ -10,7 +10,9 @@ It render your complete status in a Twitter Card or a Facebook preview thanks to
 > Bug with forced HTTPS instance ! (This is a beta)
 
 
-## Exemple
+## Example
+
+Live example : https://twitter.com/DavidLibeau/status/853180628732391424
 
 All you need to do is sharing a link like that one :
 
