@@ -14,7 +14,7 @@ Embed Mastodon statuses in your blog, or whatever WordPress site, only with :
 [mastodon url="https://mastodon.xyz/@David/15605"][/mastodon]
 ```
 
-:arrow_right: [Learn more](WordPress)
+:arrow_right: [Learn more](wordpress)
 
 
 ## Wall
