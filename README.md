@@ -36,6 +36,13 @@ Draw random Mastodon boosters.
 
 :arrow_right: [Learn more](contest-draw)
 
+## Scheduler
+
+Schedule your Mastodon statuses.
+
+:arrow_right: [Learn more](scheduler)
+
+
 ### Dev
 
 > In dev folder, I am trying things.
