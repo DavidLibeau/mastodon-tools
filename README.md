@@ -36,7 +36,7 @@ Draw random Mastodon boosters.
 
 :arrow_right: [Learn more](contest-draw)
 
-## Scheduler
+## Scheduler [beta]
 
 Schedule your Mastodon statuses.
 
