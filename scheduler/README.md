@@ -1,11 +1,8 @@
-## Scheduler
+## Scheduler [beta]
 
 Schedule your Mastodon statuses.
 
+[**scheduler.Mastodon.tools :arrow_right:**](http://scheduler.mastodon.tools/)
 
-### Tech
 
-
-- NodeJS
-- [TaffyDB](https://github.com/typicaljoe/taffydb)
-- [node-mastodon lib](https://github.com/jessicahayley/node-mastodon)
+[Open source](https://github.com/DavidLibeau/mastodon-scheduler)
