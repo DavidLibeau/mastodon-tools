@@ -6,6 +6,14 @@
 
 > You have a cool app using Mastodon API ? You can have a free subdomain *yourappname.Mastodon.tools*, if you want ! [Learn more](/dns)
 
+## (NEW) Search Mastodon tools
+
+Search Mastodon tools with this search engine!
+
+:arrow_right: [Learn more](https://github.com/DavidLibeau/search-mastodon-tools)
+
+:arrow_right: [search.Mastodon.tools](http://search.mastodon.tools/)
+
 ## WordPress
 
 Embed Mastodon statuses in your blog, or whatever WordPress site, only with :
@@ -41,6 +49,8 @@ Draw random Mastodon boosters.
 Schedule your Mastodon statuses.
 
 :arrow_right: [Learn more](scheduler)
+
+:arrow_right: [scheduler.Mastodon.tools](https://scheduler.mastodon.tools/)
 
 
 ### Dev
