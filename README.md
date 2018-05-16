@@ -44,6 +44,13 @@ Draw random Mastodon boosters.
 
 :arrow_right: [Learn more](contest-draw)
 
+## Mastodon Wordpress Autopost Plugin
+
+A  Wordpress plugin that automatically posts your new articles to Mastodon
+
+:arrow_right: [Learn more](autopost-to-mastodon-wordpress-plugin)
+
+
 ## Scheduler [beta]
 
 Schedule your Mastodon statuses.
