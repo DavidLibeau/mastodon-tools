@@ -2,7 +2,7 @@
 
 Schedule your Mastodon statuses.
 
-[**scheduler.Mastodon.tools :arrow_right:**](http://scheduler.mastodon.tools/)
+[**scheduler.Mastodon.tools**](http://scheduler.mastodon.tools/)
 
 
-[Open source](https://github.com/DavidLibeau/mastodon-scheduler)
+[Open source](https://framagit.org/DavidLibeau/mastodon-scheduler-v2)
